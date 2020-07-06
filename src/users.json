@@ -1,0 +1,36 @@
+[
+    {
+        "data": {
+            "message": {
+                "token": "12fjgkfk",
+                "email": "97@mail.ru",
+                "password": "1234567",
+                "roleId": 2,
+                "roleName": "Пользователь"
+            }
+        }
+    },
+    {
+        "data": {
+            "message": {
+                "token": "12893",
+                "email": "98@mail.ru",
+                "password": "123456",
+                "roleId": 2,
+                "roleName": "Пользователь",
+                "result": 3
+            }
+        }
+    },
+    {
+        "data": {
+            "message": {
+                "token": "fkjdkn",
+                "email": "98@mail.ru",
+                "password": "88888888",
+                "roleId": 1,
+                "roleName": "Администратор"
+            }
+        }
+    }
+]
