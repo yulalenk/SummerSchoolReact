@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useActions from '../hooks/useAction';
 import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import { HOME, LOGIN } from '../constants/routes';
 import { loginUser, LOGIN_SUCCESS } from '../actions/loginActions';
 import { Button, InputFormWrapper, Link, Error, Transfer } from './FormsStyles';
+import {changeError, changeMessage} from '../actions/userActions';
 
 function LoginForm() {
   const [login, setLogin] = useState('');
@@ -14,16 +15,23 @@ function LoginForm() {
   const { handleSubmit, register, errors } = useForm();
   const [submitAction] = useActions([loginUser]);
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const authToken = Cookies.get('token');
 
   let isLoginSuccess = useSelector(state => state.login.type) === LOGIN_SUCCESS;
+  let error = useSelector(state => state.login.error);
 
   const submit = () => {
     if (login !== '' && password !== '') {
       submitAction(login, password);
     }
   };
+
+  const change = (() => {
+    dispatch(changeError());
+    dispatch(changeMessage());
+  });
 
   useEffect(() => {
     if (authToken && authToken !== '' && isLoginSuccess) {
@@ -34,6 +42,7 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit(submit)}>
       <InputFormWrapper>
+      <h6>{error}</h6>
         <label for="login">Email</label>
         <input
           ref={register({
@@ -70,7 +79,7 @@ function LoginForm() {
       <br />
       <Button type="submit">Log in</Button>
 
-      <NavLink to={LOGIN + '?tab=reg'}>
+      <NavLink to={LOGIN + '?tab=reg'} onClick={change}>
         <Transfer>Need an account?</Transfer>
       </NavLink>
     </form>

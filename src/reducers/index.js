@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
 import loginReducer from "./loginReducer";
-import userReducer from './userReducer';
 
 export const appReducer = combineReducers({
-  login: loginReducer,
-  user: userReducer
+  login: loginReducer
 });
 
 export const rootReducer = (state, action) => {

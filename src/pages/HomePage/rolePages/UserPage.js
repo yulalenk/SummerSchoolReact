@@ -1,66 +1,85 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import useActions from '../../../hooks/useAction';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
-import { LOGIN, HOME } from '../../../constants/routes';
-import { del  } from '../../../actions/userActions';
-import { send  } from '../../../actions/quizActions';
-import { Wrapper, Form, Button, QuizWrapper } from './UserPageStyles';
+import { LOGIN } from '../../../constants/routes';
+import { del } from '../../../actions/userActions';
+import { send } from '../../../actions/quizActions';
+import { Wrapper, Form, Button, QuizWrapper, InputFormWrapper } from './UserPageStyles';
 import Question from '../../../quiz/Question';
 import QuestionCount from '../../../quiz/QuestionCounter';
-import Questions from '../../../quiz/quizQuestions.json';
-import {InputFormWrapper} from './UserPageStyles';
 
 
 function UserPage() {
 
-  const startResult = useSelector(state => state.user.user.result);
-  const init = startResult?startResult:0;
+  const startResult = useSelector(state => state.login.user.result);
+  const quizQuestions = useSelector(state => state.login.questions);
+  const init = startResult ? startResult : 0;
   const dispatch = useDispatch();
   const history = useHistory();
   const [questionId, setQuestionId] = useState(0);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState(init);
-  const [button, setButton] = useState("next");
+  const [timer, setTimer] = useState(0);
+  const [submitAction] = useActions([del]);
 
-  let quizQuestions = Questions;
+
+  //let quizQuestions = Questions;
+  let time;
+
+
+  function countdown() {  // функция обратного отсчета
+    setTimer(timer - 1);
+    if (timer < 0) {
+      clearTimeout(time); // таймер остановится на нуле
+    }
+    else {
+      console.log("Я зашел сюда")
+      time = setTimeout(countdown, 1000);
+    }
+  }
+
 
 
   const signOut = () => {
+    dispatch(send(result));
+    submitAction();
     Cookies.remove('token');
-    dispatch(del());
     history.push(LOGIN);
   };
 
-  const nextQuestion = () => {
-    console.log(questionId)
-    if (questionId < quizQuestions.length - 1) {
+  let nextQuestion = () => {
+    if (questionId < quizQuestions.length) {
+      let answer = document.getElementById("answer").value;
       if (answer == quizQuestions[questionId].answer.trim()) {
         setResult(result + 1);
       }
       setQuestionId(questionId + 1);
-      setQuestion(quizQuestions[questionId].question);
-      if (questionId == 4)
-        setButton("Check")
-        setAnswer("");
     } else {
       if (answer == quizQuestions[questionId].answer.trim()) {
         setResult(result + 1);
       }
-      dispatch(send(result));
-
     }
-  }
+    setAnswer("");
+
+  };
 
   useEffect(() => {
-    setQuestion(quizQuestions[questionId].question)
-  }, [questionId, result]
+    if (questionId < quizQuestions.length) {
+      if (startResult == null) {
+        setQuestion(quizQuestions[questionId].question);
+        setTimeout(nextQuestion, 10000 / 2);
+      }
+    }
+    else
+      dispatch(send(result));
+  }, [questionId]
   );
 
 
-
-if (init == 0){
+  if (startResult == null) {
     return (
       <Wrapper>
         <Button
@@ -72,6 +91,7 @@ if (init == 0){
       </Button>
 
         <Form>
+          {timer}
           <QuizWrapper >
             <QuestionCount
               counter={questionId + 1}
@@ -79,14 +99,11 @@ if (init == 0){
             />
             <Question content={question} />
             <InputFormWrapper>
-            <input value={answer} onChange={e => setAnswer(e.target.value)} />
+              <input id="answer" value={answer} onChange={e => setAnswer(e.target.value)} />
             </InputFormWrapper>
             <br />
-            <button onClick={nextQuestion}>{button}</button>
           </QuizWrapper>
         </Form>
-
-
       </Wrapper>
     )
   }
@@ -107,8 +124,6 @@ if (init == 0){
           <h1>Your result:</h1>
           <h1>{result}</h1>
         </Form>
-
-
       </Wrapper>
     )
   }
