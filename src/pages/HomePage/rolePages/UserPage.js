@@ -24,6 +24,8 @@ function UserPage() {
   const [result, setResult] = useState(init);
   const [timer, setTimer] = useState(0);
   const [submitAction] = useActions([del]);
+  const [quizData,setQuizData] =useState([]);
+
 
 
   //let quizQuestions = Questions;
@@ -44,7 +46,6 @@ function UserPage() {
 
 
   const signOut = () => {
-    dispatch(send(result));
     submitAction();
     Cookies.remove('token');
     history.push(LOGIN);
@@ -53,14 +54,21 @@ function UserPage() {
   let nextQuestion = () => {
     if (questionId < quizQuestions.length) {
       let answer = document.getElementById("answer").value;
-      if (answer == quizQuestions[questionId].answer.trim()) {
-        setResult(result + 1);
-      }
+      setQuizData(quizData.concat(answer));
+      //quizData.push(answer);
+      console.log(quizData);
+      // if (answer == quizQuestions[questionId].answer.trim()) {
+      //   setResult(result + 1);
+      // }
+      setResult(result + 1);
       setQuestionId(questionId + 1);
     } else {
-      if (answer == quizQuestions[questionId].answer.trim()) {
-        setResult(result + 1);
-      }
+      // if (answer == quizQuestions[questionId].answer.trim()) {
+      //   setResult(result + 1);
+      // }
+      quizData.push(answer);
+      setResult(result + 1);
+
     }
     setAnswer("");
 
@@ -74,7 +82,7 @@ function UserPage() {
       }
     }
     else
-      dispatch(send(result));
+      dispatch(send(result, quizData));
   }, [questionId]
   );
 
@@ -82,13 +90,13 @@ function UserPage() {
   if (startResult == null) {
     return (
       <Wrapper>
-        <Button
+        {/* <Button
           style={{ height: '20px' }}
           onClick={() => signOut()}
           variant="contained"
         >
           Logout
-      </Button>
+      </Button> */}
 
         <Form>
           {timer}

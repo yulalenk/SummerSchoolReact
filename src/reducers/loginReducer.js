@@ -50,7 +50,8 @@ export default (state = initialState, action) => {
         ...state,
         type: action.type,
         user: action.payload,
-        questions: action.payload2
+        questions: action.payload2,
+        message: null
       }
     case REGISTER_SUCCESS:
       return {

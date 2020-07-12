@@ -6,16 +6,24 @@ export const CHANGE_RESULT_SUCCESS = "change_result_success";
 export const CHANE_RESULT_FAIL = "change_result_fail";
 
 
-export const send = (result) => async dispatch => {
+export const send = (result,quizData) => async dispatch => {
     var token = "Basic "+Cookies.get('token');
     var headers = {
         'Authorization':token
     }
     console.log(headers);
+    console.log(quizData)
+    var quiz = {
+        "answer1":quizData[0],
+        "answer2":quizData[1],
+        "answer3":quizData[2],
+        "answer4":quizData[3]
+    }
+    console.log(quiz);
 
     try {
         const res = await axios.post(CHANGE_RESULT_REQUEST, 
-            {"result":result},
+            {"result":result,"quizData":quiz},
             {"headers": headers}
         );
         console.log(res);

@@ -32,6 +32,10 @@ function Table(props){
         <tr>
             <td>{user.username}</td>
             <td>{user.result}</td>
+            <td>{user.quiz.answer1}</td>
+            <td>{user.quiz.answer2}</td>
+            <td>{user.quiz.answer3}</td>
+            <td>{user.quiz.answer4}</td>
             <td><input type="checkbox" value={user.username} onClick={e => setList(e.target.value, e.target.checked)}></input></td>
         </tr>
     </table>
@@ -40,6 +44,15 @@ function Table(props){
 
     return(
         <div>
+            <tr>
+            <td>Email</td>
+            <td>Quistions</td>
+            <td>Answer1</td>
+            <td>Answer2</td>
+            <td>Answer3</td>
+            <td>Answer4</td>
+            <td>SendEmail</td>
+        </tr>
         <div>{list}</div>
         <button onClick={sendMessages}>Send message about an interview to chosen people</button>
         <h1>{message}</h1>
