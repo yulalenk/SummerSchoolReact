@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const InputFormWrapper = styled.div`
   position: relative;
-  padding: 15px 0 0;
   margin-top: 5px;
   width: 100%;
 
@@ -28,7 +27,7 @@ const InputFormWrapper = styled.div`
       }
       padding-bottom: 6px;
       border-width: 3px;
-      border-image: linear-gradient(to right, #2196f3, #bbdefb);
+      border-image: linear-gradient(to right, #08294a, #ccdeef);
       border-image-slice: 1;
     }
 
@@ -48,7 +47,7 @@ const InputFormWrapper = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #87c6f8;
+  background-color: #f2602c;
   cursor: pointer;
   user-select: none;
   border: 1px solid #ffffff;
@@ -74,6 +73,10 @@ const Button = styled.button`
     outline: 0 none;
   }
 `;
+
+const Note = styled.h4`
+  color: #08294a;
+`
 
 const Error = styled.text`
   color: #8b0000;
@@ -106,7 +109,7 @@ const Link = styled.a`
 const Transfer = styled.a`
   position: absolute;
   left: 176px;
-  color: #3eacdc;
+  color: #08294a;
   text-decoration: none;
   font-family: sans-serife;
 
@@ -115,4 +118,4 @@ const Transfer = styled.a`
   }
 `;
 
-export { Button, InputFormWrapper, Link, Error, Transfer };
+export { Button, InputFormWrapper, Link, Error, Transfer, Note };

@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Button from '@material-ui/core/Button';
 import Cookies from 'js-cookie';
 import { LOGIN } from '../../../constants/routes';
 import { del, show } from '../../../actions/userActions';
+import { Wrapper } from './AdminPageStyles';
 import Table from '../../../table/Table';
+import App from '../../../chat/App';
 
 function AdminPage() {
 
@@ -25,56 +28,34 @@ function AdminPage() {
   };
 
 
-  if (list1 != null) {
-    return (
-      <div>
-        <h1>
-          <button
-            onClick={() => list()}>
+  //if (list1 != null) {
+  return (
+    <Wrapper>
+      <table>
+        <td>
+          <Button
+            onClick={() => list()}
+            style={{ backgroundColor: "#08294a", color:"white", border:"3px solid white",height: "30px" }}
+            variant="contained">
             Show all participants
-          </button>
-        </h1>
-        <button
-
-          style={{ height: '20px' }}
-          onClick={() => signOut()}
-          variant="contained"
-          color="primary">
-          Logout
-      </button>
-
-        <div>
-          <Table list={list1}></Table>
-      </div>
-
-      </div>
-    )
-  }
-  else {
-    return (
-      <div>
-        <h1>
-          <button
-            onClick={() => list()}>
-            Show all participants
-          </button>
-        </h1>
-        <button
-
-          style={{ height: '20px' }}
-          onClick={() => signOut()}
-          variant="contained"
-          color="primary">
-          Logout
-      </button>
-
-        <div>
-      </div>
-
-      </div>
-    )
-
-  }
+          </Button>
+          <Button
+            className="button"
+            onClick={() => signOut()}
+            variant="contained"
+            style={{ backgroundColor: "#08294a", color:"white",height: "30px",border:"3px solid white" }}
+            color="default">
+            Logout
+      </Button>
+          <br />
+          <Table list={list1 ? list1 : []}></Table>
+        </td>
+        <td>
+          <App></App>
+        </td>
+      </table>
+    </Wrapper>
+  )
 }
 
 export default AdminPage;

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Counter} from './QuizPartsStyles'
 
 export default function QuestionCount(props) {
 return (
-<div>
+<Counter>
 Question <span>{props.counter}</span> of <span>{props.total}</span>
-</div>
+</Counter>
 );
 }
 QuestionCount.propTypes = {

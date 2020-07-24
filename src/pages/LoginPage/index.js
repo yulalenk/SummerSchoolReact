@@ -18,8 +18,8 @@ function AuthenticationPage(props) {
           <BackImage src={`${process.env.PUBLIC_URL}/image/cloud.png`} timeAnimation="70s" />
         </CloudWrapper>
         <LoginFormWrapper>
-          <Logo src={`${process.env.PUBLIC_URL}/image/logo.png`} />
-          <Text>Welcome to sdLitica!</Text>
+          <Logo src={`${process.env.PUBLIC_URL}/image/logo1.png`} />
+          <Text>Welcome to SummerSchool</Text>
           <LoginForm />
         </LoginFormWrapper>
       </LoginWrapper>
@@ -34,8 +34,8 @@ function AuthenticationPage(props) {
           <BackImage src={`${process.env.PUBLIC_URL}/image/cloud.png`} timeAnimation="70s" />
         </CloudWrapper>
         <LoginFormWrapper>
-          <Logo src={`${process.env.PUBLIC_URL}/image/logo.png`} />
-          <Text>Welcome to sdLitica!</Text>
+          <Logo src={`${process.env.PUBLIC_URL}/image/logo1.png`} />
+          <Text>Welcome to SummerSchool</Text>
           <RegistrationForm />
         </LoginFormWrapper>
       </LoginWrapper>

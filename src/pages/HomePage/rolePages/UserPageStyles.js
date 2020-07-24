@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 const Wrapper = styled.div`
   position:relative;
   box-sizing: border-box;
-  padding-top:10%;
+ // padding-top:10%;
   width:  100%;
   height: 100vh;
   background-color: #E3ECF4;
@@ -28,7 +28,7 @@ const InputFormWrapper = styled.div`
     font-family: sans-serif;
     width: 70%;
     border: 0;
-    border-bottom: 2px solid #9b9b9b;
+    border-bottom: 2px solid #08294a;
     outline: 0;
     font-size: 1.1rem;
     color: #9b9b9b;
@@ -46,7 +46,7 @@ const InputFormWrapper = styled.div`
       }
       padding-bottom: 6px;
       border-width: 3px;
-      border-image: linear-gradient(to right, #2196f3, #bbdefb);
+      border-image: linear-gradient(to right, #f2602c, #ffefd5);
       border-image-slice: 1;
     }
 
@@ -66,28 +66,45 @@ const InputFormWrapper = styled.div`
 `;
 
 const Form = styled.div`
-  position: relative;
+  position: absolute;
+  left:250px;
+  top:190px;
   z-index: 1;
   box-shadow: 0 10px 7px -10px rgba(0, 0, 0, 0.4);
   text-align:center;
-  background: white;
+  background: #f2f6fb;
   width:450px;
-  height: 450px;
+  height: 200px;
+  border: 2px solid #08294a;
   border-radius: 10px;
-  margin: auto;
-  padding:auto;
   align:center;
 
-  @media (max-width: 500px) {
-    width: 100%;
-    top:50px;
-    border-radius: 0px;
-  }
+`;
+
+const Text = styled.h2`
+color:#08294a;
+margin-top:70px;
+`
+
+const FormAfter = styled.div`
+  position: absolute;
+  left:420px;
+  top:190px;
+  z-index: 1;
+  box-shadow: 0 10px 7px -10px rgba(0, 0, 0, 0.4);
+  text-align:center;
+  background: #f2f6fb;
+  width:450px;
+  height: 200px;
+  border: 2px solid #08294a;
+  border-radius: 10px;
+  align:center;
+  vertical-align:middle;
 
 `;
 
 const Button = styled.button`
-  background-color: #87c6f8;
+  background-color: #f2602c;
   border: 1px solid #FFFFFF;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
   transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
@@ -109,4 +126,4 @@ const Button = styled.button`
   }
 `;
 
-export {Wrapper,Form,Button, InputFormWrapper, QuizWrapper};
+export {Wrapper,Form,Button, InputFormWrapper, QuizWrapper, FormAfter, Text};

@@ -21,7 +21,7 @@ export const loginUser = (login, password) => async dispatch => {
       "username": login,
       "password": password
     });
-    Cookies.set('token', res.data.message, {sameSite:"lax"} );
+    Cookies.set('token', res.data.message, { sameSite: "lax" });
     console.log(res.data.user);
     dispatch({
       type: LOGIN_SUCCESS,
@@ -29,40 +29,14 @@ export const loginUser = (login, password) => async dispatch => {
       payload2: res.data.questions
     });
   } catch (error) {
-     if (error.response.status == 401){
-    dispatch({
-      type: LOGIN_FAIL,
-      payload: "Wrong user or password"
-    });
-  }
-};
+    if (error.response.status == 401) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: "Wrong user or password"
+      });
+    }
+  };
 }
-
-// export const loginUser = (login, password) => async dispatch => {
-//   dispatch({
-//     type: LOGIN_LOADING
-//   });
-
-//   axios.post(LOGIN_REQUEST, {
-//     "username": login,
-//     "password": password
-//   }).then(res => {
-//     Cookies.set('token', res.data.message, { sameSite: "lax" });
-//     console.log(res.data.user);
-//     dispatch({
-//       type: LOGIN_SUCCESS,
-//       payload: res.data.user
-//     });
-//   }).catch(err => {
-//     ;
-//     dispatch({
-//       type: LOGIN_FAIL,
-//       error
-//     });
-//   }
-//   );
-// };
-
 
 export const registerUser = (login, password) => async dispatch => {
   dispatch({
@@ -74,16 +48,12 @@ export const registerUser = (login, password) => async dispatch => {
       "password": password
     });
     console.log("От реги" + response);
-    // if (response.status !== 200) {
-    //   throw Error(response.data.message);
-    // }
-    // //Cookies.set('token', res.data.message);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: response.data.message
     });
   } catch (error) {
-    if (error.response.status == 409){
+    if (error.response.status == 409) {
       dispatch({
         type: REGISTER_FAIL,
         payload: "User with this email have already exist"

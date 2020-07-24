@@ -40,7 +40,8 @@ const BackImage = styled.img`
 `;
 
 const Logo = styled.img`
-  width:230px;
+  width:130px;
+  height:130px;
   position: relative;
   top:-65px;
 `;
@@ -52,7 +53,7 @@ const LoginFormWrapper = styled.div`
   text-align:center;
   background: white;
   width:450px;
-  height: 450px;
+  height: 480px;
   border-radius: 10px;
   margin: auto;
   padding:auto;
@@ -67,7 +68,7 @@ const LoginFormWrapper = styled.div`
 
 const Text = styled.p`
   font-size: 1.5rem;
-  color: #3eacdc;
+  color: #08294a;
   font-weight:bold;
   font-family: sans-serif;
   position:relative;

@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import Cookies from 'js-cookie';
 import { HOME, LOGIN } from '../constants/routes';
 import { loginUser, LOGIN_SUCCESS } from '../actions/loginActions';
-import { Button, InputFormWrapper, Link, Error, Transfer } from './FormsStyles';
-import {changeError, changeMessage} from '../actions/userActions';
+import { Button, InputFormWrapper, Link, Error, Transfer, Note } from './FormsStyles';
+import { changeError, changeMessage } from '../actions/userActions';
 
 function LoginForm() {
   const [login, setLogin] = useState('');
@@ -42,7 +42,6 @@ function LoginForm() {
   return (
     <form onSubmit={handleSubmit(submit)}>
       <InputFormWrapper>
-      <h6>{error}</h6>
         <label for="login">Email</label>
         <input
           ref={register({
@@ -77,6 +76,7 @@ function LoginForm() {
         <Error>{errors.password && errors.password.message}</Error>
       </InputFormWrapper>
       <br />
+      <Note>{error}</Note>
       <Button type="submit">Log in</Button>
 
       <NavLink to={LOGIN + '?tab=reg'} onClick={change}>

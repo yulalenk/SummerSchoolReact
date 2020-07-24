@@ -6,23 +6,21 @@ import Cookies from 'js-cookie';
 import { LOGIN, HOME } from '../constants/routes';
 import { registerUser, REGISTER_SUCCESS } from '../actions/loginActions';
 import useActions from '../hooks/useAction';
-import { Button, InputFormWrapper, Error, Transfer } from './FormsStyles';
-import {changeError} from '../actions/userActions';
+import { Button, InputFormWrapper, Error, Transfer, Note } from './FormsStyles';
+import { changeError } from '../actions/userActions';
 
 function RegistrationForm() {
+  const authToken = Cookies.get('token');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const { handleSubmit, register, errors } = useForm();
   const history = useHistory();
-  // Alternative bindActionCreators
   const [submitAction] = useActions([registerUser]);
   const dispatch = useDispatch();
-
-  const authToken = Cookies.get('token');
-
   let isRegisterSuccess = useSelector(state => state.login.type) === REGISTER_SUCCESS;
   let message = useSelector(state => state.login.message);
   let error = useSelector(state => state.login.error);
+
   useEffect(() => {
     if (authToken && authToken !== '' && isRegisterSuccess) {
       history.push(HOME);
@@ -41,14 +39,12 @@ function RegistrationForm() {
 
   useEffect(() => {
     dispatch(changeError());
-  }, [message] );
+  }, [message]);
 
 
   return (
     <form onSubmit={handleSubmit(submit)}>
       <InputFormWrapper>
-      <h6>{message}</h6>
-      <h6>{error}</h6>
         <label htmlFor="login">Enter your email</label>
         <input
           ref={register({
@@ -81,6 +77,8 @@ function RegistrationForm() {
         <Error>{errors.password && errors.password.message}</Error>
       </InputFormWrapper>
       <br />
+      <Note>{message}</Note>
+      <Note>{error}</Note>
       <Button type="submit">Sign up</Button>
       <NavLink to={LOGIN} onClick={change}>
         <Transfer>Have an account?</Transfer>

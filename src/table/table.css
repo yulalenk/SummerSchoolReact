@@ -1,0 +1,16 @@
+
+.table {
+max-width: 900px;
+border: 2px solid #08294a;
+border-bottom: 2px solid #08294a;
+border-radius: 4px 4px 20px 20px;
+}
+
+.header {
+    background:#ccdeef;
+    color:white;
+}
+
+.row {
+    background-color: #f2f6fb;
+}
