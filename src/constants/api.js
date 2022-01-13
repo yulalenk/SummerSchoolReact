@@ -1,10 +1,10 @@
-export const LOGIN_REQUEST = `${process.env.REACT_APP_APISERVER}/login`;
-export const REGISTER_REQUEST = `${process.env.REACT_APP_APISERVER}/register`;
-export const CHANGE_RESULT_REQUEST = `${process.env.REACT_APP_APISERVER}/result`;
-export const LOGOUT_REQUEST = `${process.env.REACT_APP_APISERVER}/logout`;
-export const SHOW_LIST_REQUEST = `${process.env.REACT_APP_APISERVER}/list`;
-export const SHOW_QUESTIONS_REQUEST = `${process.env.REACT_APP_APISERVER}/questions`;
-export const EMAILS_REQUEST = `${process.env.REACT_APP_APISERVER}/email`;
+export const LOGIN_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/login`;
+export const REGISTER_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/register`;
+export const CHANGE_RESULT_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/result`;
+export const LOGOUT_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/logout`;
+export const SHOW_LIST_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/list`;
+export const SHOW_QUESTIONS_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/questions`;
+export const EMAILS_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/email`;
 
 export const START_CHAT_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/ws`;
 export const ADD_USER_CHAT_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/app/chat.addUser`;
