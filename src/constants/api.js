@@ -1,5 +1,5 @@
 export const LOGIN_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/login`;
-export const REGISTER_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/register`;
+export const REGISTER_REQUEST = `https://cors-everywhere.herokuapp.com/http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/register`;
 export const CHANGE_RESULT_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/result`;
 export const LOGOUT_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/logout`;
 export const SHOW_LIST_REQUEST = `http://summerschoolspring-env-1.eba-yprtczhe.eu-west-3.elasticbeanstalk.com/users/list`;
